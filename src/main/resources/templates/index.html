@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+</head>
+<body>
+
+<div th:replace="/fragments/nav.html :: fragment-nav"></div>
+
+<!-- 페이지 소스 -->
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1>Board</h1>
+
+        <br>
+        <!-- 목록 출력 영역 -->
+        <table class="table table-horizontal table-boarded">
+        <thead class="thead-strong">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>최종수정일</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr th:each="list : ${posts}">
+                <td th:text="${list.id}"></td>
+                <td th:text="${list.title}"></td>
+                <td th:text="${list.author}"></td>
+                <td th:text="${list.modifiedDate}"></td>
+            </tr>
+        </tbody>
+        </table>
+
+        <div class="btn_wrap text-right">
+            <a th:href="@{/posts-save}" class="btn btn-primary waves-effect waves-light">Write</a>
+        </div>
+    </div>
+</div>
+<!-- 페이지 소스 -->
+
+<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+</body>
+</html>
