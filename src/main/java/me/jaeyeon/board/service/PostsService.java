@@ -7,6 +7,7 @@ import me.jaeyeon.board.web.dto.PostsListResponseDto;
 import me.jaeyeon.board.web.dto.PostsResponseDto;
 import me.jaeyeon.board.web.dto.PostsSaveRequestDto;
 import me.jaeyeon.board.web.dto.PostsUpdateRequestDto;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,10 +41,14 @@ public class PostsService {
         return new PostsResponseDto(posts);
     }
 
-    public List<PostsListResponseDto> findAllDesc() {
-        return postsRepository.findAllDesc().stream()
+    public Page<PostsListResponseDto> findAllDesc(Pageable pageable) {
+        Page<Posts> posts = postsRepository.findAllDesc(pageable);
+        List<PostsListResponseDto> results = posts.getContent().stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
+        long totalCount = posts.getTotalElements();
+
+        return new PageImpl<>(results, pageable, totalCount);
     }
 
     @Transactional
