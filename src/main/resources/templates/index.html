@@ -25,7 +25,7 @@
                 <td th:text="${list.id}"></td>
                 <td th:text="${list.title}"></td>
                 <td th:text="${list.author}"></td>
-                <td th:text="${list.modifiedDate}"></td>
+                <td th:text="${#temporals.format(list.modifiedDate, 'yyyy-mm-dd HH:mm')}"></td>
             </tr>
         </table>
 
@@ -33,14 +33,14 @@
             <ul class="pagination justify-content-center"
                 th:with="start=${T(Math).floor(posts.number/10)*10},
                     last=(${start + 9 < posts.totalPages-1 ? start + 9 : posts.totalPages-1})">
-                <li class="page-item disabled">
+                <li>
                     <a th:href="@{/(page=0)}" aria-label="First">
                         <span aria-hidden="true">First</span>
                     </a>
                 </li>
 
                 <li th:class="${posts.first} ? 'disabled'">
-                    <a th:href="${posts.first} ? '#' :@{/(page=${posts.number-1})}" aria-label="Previous">
+                    <a th:href="${posts.first} ? '#' :@{/index(page=${posts.number-1})}" aria-label="Previous">
                         <span aria-hidden="true"><</span>
                     </a>
                 </li>
@@ -50,7 +50,7 @@
                 </li>
 
                 <li th:class="${posts.last} ? 'disabled'">
-                    <a th:href="${posts.last} ? '#' : @{/(page=${posts.number+1})}" aria-label="Next">
+                    <a th:href="${posts.last} ? '#' : @{/index(page=${posts.number+1})}" aria-label="Next">
                         <span aria-hidden="true">></span>
                     </a>
                 </li>

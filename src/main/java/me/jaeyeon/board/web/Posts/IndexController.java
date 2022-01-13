@@ -2,6 +2,7 @@ package me.jaeyeon.board.web.Posts;
 
 import lombok.RequiredArgsConstructor;
 import me.jaeyeon.board.domain.posts.Posts;
+import me.jaeyeon.board.service.PostsPagingService;
 import me.jaeyeon.board.service.PostsService;
 import me.jaeyeon.board.web.dto.PostsListResponseDto;
 import me.jaeyeon.board.web.dto.PostsResponseDto;
@@ -21,13 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class IndexController {
 
     private final PostsService postsService;
+    private final PostsPagingService postsPagingService;
 
     @GetMapping("/")
     public String index(Model model, @PageableDefault Pageable pageable) {
 //        model.addAttribute("posts", postsService.findAllDesc());
 
         pageable = PageRequest.of(pageable.getPageNumber(), 10);
-        model.addAttribute("posts", postsService.findAllDesc(pageable));
+        model.addAttribute("posts", postsPagingService.findAllDesc(pageable));
         return "index";
     }
 

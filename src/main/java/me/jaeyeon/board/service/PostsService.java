@@ -2,6 +2,7 @@ package me.jaeyeon.board.service;
 
 import lombok.RequiredArgsConstructor;
 import me.jaeyeon.board.domain.posts.Posts;
+import me.jaeyeon.board.domain.posts.PostsPagingRepository;
 import me.jaeyeon.board.domain.posts.PostsRepository;
 import me.jaeyeon.board.web.dto.PostsListResponseDto;
 import me.jaeyeon.board.web.dto.PostsResponseDto;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 public class PostsService {
 
     private final PostsRepository postsRepository;
+    private final PostsPagingRepository postsPagingRepository;
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto) {
@@ -39,16 +41,6 @@ public class PostsService {
         Posts posts = getPosts(postsRepository, id);
 
         return new PostsResponseDto(posts);
-    }
-
-    public Page<PostsListResponseDto> findAllDesc(Pageable pageable) {
-        Page<Posts> posts = postsRepository.findAllDesc(pageable);
-        List<PostsListResponseDto> results = posts.getContent().stream()
-                .map(PostsListResponseDto::new)
-                .collect(Collectors.toList());
-        long totalCount = posts.getTotalElements();
-
-        return new PageImpl<>(results, pageable, totalCount);
     }
 
     @Transactional
