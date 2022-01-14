@@ -5,12 +5,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import me.jaeyeon.board.domain.posts.Posts;
 
+import javax.validation.constraints.NotEmpty;
+
 @Getter
 @NoArgsConstructor
 public class PostsSaveRequestDto {
 
+    @NotEmpty(message = "글 제목을 입력해주시기 바랍니다.")
     private String title;
+
+    @NotEmpty(message = "글 내용을 입력해주시기 바랍니다.")
     private String content;
+
+    @NotEmpty(message = "글 작성자을 입력해주시기 바랍니다.")
     private String author;
 
     @Builder // builder 클래스 자동 생성 -> 생성자 대신 사용

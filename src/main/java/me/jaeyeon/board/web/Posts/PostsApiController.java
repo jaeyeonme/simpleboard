@@ -6,7 +6,10 @@ import me.jaeyeon.board.web.dto.PostsResponseDto;
 import me.jaeyeon.board.web.dto.PostsSaveRequestDto;
 import me.jaeyeon.board.web.dto.PostsUpdateRequestDto;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @EnableJpaAuditing
@@ -15,22 +18,22 @@ public class PostsApiController {
 
     private final PostsService postsService;
 
-    @PostMapping("/api/v1/posts")
-    public Long save(@RequestBody PostsSaveRequestDto requestDto) {
+    @PostMapping(produces = "/api/v1/posts", consumes = MediaTypes.HAL_FORMS_JSON_VALUE)
+    public Long save(@RequestBody @Valid PostsSaveRequestDto requestDto) {
         return postsService.save(requestDto);
     }
 
-    @PutMapping("/api/v1/posts/{id}")
-    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
+    @PutMapping(value = "/api/v1/posts/{id}", produces = MediaTypes.HAL_FORMS_JSON_VALUE, consumes = MediaTypes.HAL_FORMS_JSON_VALUE)
+    public Long update(@PathVariable Long id, @RequestBody @Valid PostsUpdateRequestDto requestDto) {
         return postsService.update(id, requestDto);
     }
 
-    @GetMapping("/api/v1/posts/{id}")
+    @GetMapping(value = "/api/v1/posts/{id}", produces = MediaTypes.HAL_FORMS_JSON_VALUE)
     public PostsResponseDto findById(@PathVariable Long id)  {
         return postsService.findById(id);
     }
 
-    @DeleteMapping("/api/v1/posts/{id}")
+    @DeleteMapping(value = "/api/v1/posts/{id}", produces = MediaTypes.HAL_FORMS_JSON_VALUE)
     public Long delete(@PathVariable Long id) {
         postsService.delete(id);
         return id;
