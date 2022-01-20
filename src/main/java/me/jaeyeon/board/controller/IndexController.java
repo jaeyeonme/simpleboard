@@ -2,13 +2,12 @@ package me.jaeyeon.board.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class BoardController {
+public class IndexController {
 
     @GetMapping("/")
-    public String index() {
+    public String main() {
         return "index";
     }
 }
