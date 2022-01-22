@@ -2,6 +2,7 @@ package me.jaeyeon.board.service;
 
 import lombok.RequiredArgsConstructor;
 import me.jaeyeon.board.dto.BoardListResponseDto;
+import me.jaeyeon.board.dto.BoardResponseDto;
 import me.jaeyeon.board.dto.BoardSaveRequestDto;
 import me.jaeyeon.board.dto.BoardUpdateRequestDto;
 import me.jaeyeon.board.entity.Board;
@@ -37,6 +38,11 @@ public class BoardService {
 
         board.update(boardUpdateRequestDto.getTitle(), boardUpdateRequestDto.getContent());
         return id;
+    }
+
+    public BoardResponseDto findById(Long id) {
+        final Board board = getBoard(id);
+        return new BoardResponseDto(board);
     }
 
     @Transactional
