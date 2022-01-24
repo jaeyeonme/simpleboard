@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.validation.Valid;
+
 @Controller
 @RequiredArgsConstructor
 public class IndexController {
@@ -21,12 +23,12 @@ public class IndexController {
     }
 
     @GetMapping("/board/save")
-    public String saveBord() {
+    public String newPost() {
         return "board-save";
     }
 
-    @GetMapping("/board/update/{id}")
-    public String updateBoard(@PathVariable Long id, Model model) {
+    @GetMapping("/boards/update/{id}")
+    public String boardUpdate(@PathVariable Long id, Model model) {
         final BoardResponseDto dto = boardService.findById(id);
         model.addAttribute("board", dto);
 

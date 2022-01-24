@@ -3,5 +3,36 @@
 <head th:replace="fragments.html :: head"></head>
 <body class="bg-light">
     <div th:replace="fragments.html :: main-nav"></div>
+    <div class="container">
+        <div class="py-5 text-center">
+            <h1>게시판</h1>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="/board/save" role="button" class="btn btn-primary">글 등록</a>
+                </div>
+            </div>
+        </div>
+
+        <table class="table mt-3 text-center">
+            <tr>
+                <th>글 번호</th>
+                <th>글쓴이</th>
+                <th>글 제목</th>
+                <th>최종수정</th>
+            </tr>
+            <tr th:each="board: ${boards}">
+                <td th:text="${board.id}"></td>
+                <td>
+                    <a th:href="${board.link}" th:text="${board.author}" />
+                </td>
+                <td>
+                    <a th:href="${board.link}" th:text="${board.title}" />
+                </td>
+                <td th:text="${board.modifiedDate}"></td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>

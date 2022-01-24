@@ -5,9 +5,8 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
 @Getter
-@ToString(exclude = "member")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Board extends BaseTimeEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,7 +29,7 @@ public class Board extends BaseTimeEntity {
         this.content = content;
         this.author = author;
     }
-    
+
     public void update(String title, String content) {
         this.title = title;
         this.content = content;
