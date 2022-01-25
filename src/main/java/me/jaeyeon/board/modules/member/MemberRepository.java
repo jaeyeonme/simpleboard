@@ -1,6 +1,6 @@
-package me.jaeyeon.board.repository;
+package me.jaeyeon.board.modules.member;
 
-import me.jaeyeon.board.entity.Member;
+import me.jaeyeon.board.modules.member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {

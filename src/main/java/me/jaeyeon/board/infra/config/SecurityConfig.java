@@ -1,7 +1,7 @@
-package me.jaeyeon.board.config;
+package me.jaeyeon.board.infra.config;
 
 import lombok.RequiredArgsConstructor;
-import me.jaeyeon.board.service.MemberService;
+import me.jaeyeon.board.modules.member.MemberService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

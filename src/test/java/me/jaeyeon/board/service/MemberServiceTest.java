@@ -1,7 +1,8 @@
 package me.jaeyeon.board.service;
 
 import me.jaeyeon.board.dto.MemberFormDto;
-import me.jaeyeon.board.entity.Member;
+import me.jaeyeon.board.modules.member.Member;
+import me.jaeyeon.board.modules.member.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

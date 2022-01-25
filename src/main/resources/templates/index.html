@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-6">
-                    <a href="/board/save" role="button" class="btn btn-primary">글 등록</a>
+                    <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
                 </div>
             </div>
         </div>
@@ -22,17 +22,51 @@
                 <th>글 제목</th>
                 <th>최종수정</th>
             </tr>
-            <tr th:each="board: ${boards}">
-                <td th:text="${board.id}"></td>
+            <tr th:each="posts: ${posts}">
+                <td th:text="${posts.id}"></td>
                 <td>
-                    <a th:href="${board.link}" th:text="${board.author}" />
+                    <a th:href="${posts.link}" th:text="${posts.author}" />
                 </td>
                 <td>
-                    <a th:href="${board.link}" th:text="${board.title}" />
+                    <a th:href="${posts.link}" th:text="${posts.title}" />
                 </td>
-                <td th:text="${board.modifiedDate}"></td>
+                <td th:text="${posts.modifiedDate}"></td>
             </tr>
         </table>
+
+        <nav style="text-align: center;">
+            <ul class="pagination"
+                th:with="start=${T(Math).floor(posts.number/10)*10 + 1},
+                    last=(${start + 9 < posts.totalPages ? start + 9 : posts.totalPages})">
+                <li>
+                    <a th:href="@{/(page=1)}" aria-label="First">
+                        <span aria-hidden="true">First</span>
+                    </a>
+                </li>
+
+                <li th:class="${posts.first} ? 'disabled'">
+                    <a th:href="${posts.first} ? '#' :@{/(page=${posts.number})}" aria-label="Previous">
+                        <span aria-hidden="true">&lt;</span>
+                    </a>
+                </li>
+
+                <li th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == posts.number + 1} ? 'active'">
+                    <a th:text="${page}" th:href="@{/(page=${page})}"></a>
+                </li>
+
+                <li th:class="${posts.last} ? 'disabled'">
+                    <a th:href="${posts.last} ? '#' : @{/(page=${posts.number + 2})}" aria-label="Next">
+                        <span aria-hidden="true">&gt;</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a th:href="@{/(page=${posts.totalPages})}" aria-label="Last">
+                        <span aria-hidden="true">Last</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </body>
 </html>

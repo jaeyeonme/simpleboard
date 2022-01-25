@@ -1,4 +1,4 @@
-package me.jaeyeon.board.entity;
+package me.jaeyeon.board.modules;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

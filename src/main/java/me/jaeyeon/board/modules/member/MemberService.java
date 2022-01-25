@@ -1,8 +1,6 @@
-package me.jaeyeon.board.service;
+package me.jaeyeon.board.modules.member;
 
 import lombok.RequiredArgsConstructor;
-import me.jaeyeon.board.entity.Member;
-import me.jaeyeon.board.repository.MemberRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
