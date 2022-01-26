@@ -10,33 +10,33 @@
             <div class="form-group">
                 <label for="id">글번호</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="id" name="id" th:value="${board.id}" readonly />
+                    <input type="text" class="form-control" id="id" name="id" th:value="${post.id}" readonly />
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="title">제목</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="title" name="title" th:value="${board.title}" />
+                    <input type="text" class="form-control" id="title" name="title" th:value="${post.title}" />
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="author">작성자</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="author" name="author" th:value="${board.author}" />
+                    <input type="text" class="form-control" id="author" name="author" th:value="${post.author}" readonly />
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="content">내용</label>
                 <div class="col-sm-12">
-                    <textarea class="form-control" id="content" name="content" th:value="${board.content}" style="height: 300px;" />
+                    <textarea class="form-control" id="content" name="content" th:value="${post.content}" style="height: 300px;" />
                 </div>
             </div>
         </form>
         <div class="btn_wrap text-center">
-            <a href="/" class="btn btn-default waves-effect waves-light">취소</a>
+            <a href="/" class="btn btn-default waves-effect waves-light">목록</a>
             <button type="button" id="btn-update" class="btn btn-primary waves-effect waves-light">저장하기</button>
             <button type="button" id="btn-delete" class="btn btn-danger waves-effect waves-light">삭제하기</button>
         </div>

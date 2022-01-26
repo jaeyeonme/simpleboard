@@ -3,7 +3,6 @@ package me.jaeyeon.board.modules.Posts.form;
 import lombok.*;
 import me.jaeyeon.board.modules.Posts.Posts;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class PostsDto {
@@ -14,16 +13,16 @@ public class PostsDto {
     @NoArgsConstructor
     public static class Request {
 
-        private Long id;
         private String title;
         private String content;
+        private String author;
 
         // DTO -> Entity
         public Posts toEntity() {
             final Posts posts = Posts.builder()
-                    .id(id)
                     .title(title)
                     .content(content)
+                    .author(author)
                     .build();
 
             return posts;
@@ -31,7 +30,7 @@ public class PostsDto {
     }
 
     @Getter
-    public static class Response implements Serializable {
+    public static class Response {
 
         private Long id;
         private String title;
