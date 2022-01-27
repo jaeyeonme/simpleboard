@@ -1,7 +1,7 @@
 package me.jaeyeon.board.controller;
 
 import lombok.RequiredArgsConstructor;
-import me.jaeyeon.board.dto.MemberFormDto;
+import me.jaeyeon.board.modules.member.form.MemberFormDto;
 import me.jaeyeon.board.modules.member.Member;
 import me.jaeyeon.board.modules.member.MemberService;
 import org.springframework.security.crypto.password.PasswordEncoder;

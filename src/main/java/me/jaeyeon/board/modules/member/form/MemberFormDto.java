@@ -1,4 +1,4 @@
-package me.jaeyeon.board.dto;
+package me.jaeyeon.board.modules.member.form;
 
 import lombok.Getter;
 import lombok.Setter;

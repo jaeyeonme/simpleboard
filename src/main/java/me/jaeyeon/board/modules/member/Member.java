@@ -3,8 +3,7 @@ package me.jaeyeon.board.modules.member;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import me.jaeyeon.board.constant.Role;
-import me.jaeyeon.board.dto.MemberFormDto;
+import me.jaeyeon.board.modules.member.form.MemberFormDto;
 import me.jaeyeon.board.modules.BaseTimeEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
